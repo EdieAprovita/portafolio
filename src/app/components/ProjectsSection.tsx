@@ -47,13 +47,12 @@ const projectsData: Project[] = [
 		gitUrl: "https://github.com/yourusername/tcs-assistant-systems-engineer",
 		previewUrl: "https://www.usaa.com",
 	},
-
 	{
 		id: uuidv4(),
 		title: "E-commerce API",
 		description:
 			"Designed and implemented a scalable API for an e-commerce platform, integrating database operations with Sequelize y Mongoose, ensuring data integrity and security.",
-		image: "/images/projects/ecommerce-api.png",
+		image: "/images/ecommerce.png",
 		tag: ["Personal"],
 		gitUrl: "https://github.com/yourusername/ecommerce-api",
 		previewUrl: "https://yourecommerceapi.com",
@@ -63,7 +62,7 @@ const projectsData: Project[] = [
 		title: "Digital Platform for Education",
 		description:
 			"Developed a digital platform for education, implementing real-time chat functionality, grading systems, and a resource-sharing module.",
-		image: "/images/projects/education-platform.png",
+		image: "/images/student.png",
 		tag: ["Personal"],
 		gitUrl: "https://github.com/yourusername/education-platform",
 		previewUrl: "https://youreducationplatform.com",
@@ -97,41 +96,39 @@ const ProjectsSection: React.FC = () => {
 	};
 
 	return (
-		<section id="projects">
-			<h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
-				My Projects
-			</h2>
-			<div className="text-white flex flex-row justify-center items-center gap-2 py-6">
-				<ProjectTag
-					onClick={handleTagChange}
-					name="Client"
-					isSelected={tag === "Client"}
-				/>
-				<ProjectTag
-					onClick={handleTagChange}
-					name="Personal"
-					isSelected={tag === "Personal"}
-				/>
-			</div>
-			<ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
-				{filteredProjects.map((project, index) => (
-					<motion.li
-						key={project.id}
-						variants={cardVariants}
-						initial="initial"
-						animate={isInView ? "animate" : "initial"}
-						transition={{ duration: 0.3, delay: index * 0.4 }}>
-						<ProjectCard
-							key={project.id}
-							title={project.title}
-							description={project.description}
-							imgUrl={project.image}
-							gitUrl={project.gitUrl}
-							previewUrl={project.previewUrl}
+		<section id="projects" className="bg-gray-900 text-white py-12 px-4">
+			<div className="container mx-auto">
+				<h2 className="text-center text-4xl font-bold mt-4 mb-8 md:mb-12">My Projects</h2>
+				<div className="flex flex-row justify-center items-center gap-2 mb-6">
+					{["Client", "Personal"].map(item => (
+						<ProjectTag
+							key={item}
+							onClick={() => handleTagChange(item)}
+							name={item}
+							isSelected={tag === item}
 						/>
-					</motion.li>
-				))}
-			</ul>
+					))}
+				</div>
+				<ul ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+					{filteredProjects.map((project, index) => (
+						<motion.li
+							key={project.id}
+							variants={cardVariants}
+							initial="initial"
+							animate={isInView ? "animate" : "initial"}
+							transition={{ duration: 0.3, delay: index * 0.1 }}
+							className="shadow-lg hover:shadow-xl transition-shadow duration-300">
+							<ProjectCard
+								title={project.title}
+								description={project.description}
+								imgUrl={project.image}
+								gitUrl={project.gitUrl}
+								previewUrl={project.previewUrl}
+							/>
+						</motion.li>
+					))}
+				</ul>
+			</div>
 		</section>
 	);
 };
