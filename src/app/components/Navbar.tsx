@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
 			<div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
 				<Link href={"/"} passHref>
 					<div className="text-2xl md:text-5xl text-white font-semibold cursor-pointer">
-						<Image src="/images/logo.png" width={100} height={100} alt="Logo" />
+						<Image src="/images/logo.png" width={75} height={75} alt="Logo" />
 					</div>
 				</Link>
 				<div className="mobile-menu block md:hidden">

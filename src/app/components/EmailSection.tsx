@@ -34,6 +34,16 @@ const EmailSection: React.FC = () => {
 							layout="fixed"
 						/>
 					</Link>
+					<Link href="mailto:eacm316@gmail.com">
+						<Image
+							className="hover:scale-110 transition-transform"
+							src="/images/gmail.png"
+							alt="Gmail Icon"
+							width={28}
+							height={28}
+							layout="fixed"
+						/>
+					</Link>
 				</div>
 			</div>
 		</section>
