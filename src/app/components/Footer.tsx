@@ -13,14 +13,11 @@ const Footer = () => {
 					<Link href="#" className="hover:text-white transition-colors">
 						Home
 					</Link>
-					<Link href="#" className="hover:text-white transition-colors">
+					<Link href="#about" className="hover:text-white transition-colors">
 						About
 					</Link>
-					<Link href="#" className="hover:text-white transition-colors">
+					<Link href="#projects" className="hover:text-white transition-colors">
 						Projects
-					</Link>
-					<Link href="#" className="hover:text-white transition-colors">
-						Contact
 					</Link>
 				</div>
 				<div className="flex mt-4 md:mt-0 space-x-6">
