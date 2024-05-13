@@ -96,7 +96,7 @@ const HeroSection = () => {
 						<Image
 							src="/images/image.png"
 							alt="hero image"
-							className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+							className=" rounded-full absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
 							width={300}
 							height={300}
 						/>

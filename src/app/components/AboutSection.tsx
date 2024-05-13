@@ -56,7 +56,7 @@ const AboutSection: React.FC = () => {
 	};
 
 	return (
-		<section className="bg-gray-800 text-white py-12 px-4">
+		<section id="about" className="bg-gray-800 text-white py-12 px-4">
 			<div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 				<Image
 					src="/images/setup.png"
