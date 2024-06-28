@@ -35,7 +35,7 @@ const HeroSection = () => {
 							repeat={Infinity}
 						/>
 					</h1>
-					<p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
+					<p className="text-[#f0f0f0] text-base sm:text-lg mb-6 lg:text-xl">
 						I am a seasoned full-stack developer based in Mexico City with over five years
 						of experience. Proficient in JavaScript, React, Node.js, MongoDB, HTML, CSS,
 						Express, and Mongoose, I excel in both front-end and back-end development. I

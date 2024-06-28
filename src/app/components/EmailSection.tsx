@@ -11,7 +11,7 @@ const EmailSection: React.FC = () => {
 				<h5 className="text-2xl font-bold mb-2">Lets Connect</h5>
 				<p className="text-gray-300 mb-4 max-w-lg">
 					Im currently looking for new opportunities, my inbox is always open. Whether you
-					have a question or just want to say hi, Ill try my best to get back to you!
+					have a question or just want to say hi, I´ll try my best to get back to you!
 				</p>
 				<div className="flex justify-center md:justify-start gap-4">
 					<Link href="https://github.com/EdieAprovita">

@@ -15,14 +15,27 @@ const TAB_DATA: TabData[] = [
 		title: "Skills",
 		id: "skills",
 		content: (
-			<ul className="list-disc pl-5 space-y-2">
-				<li>Node.js</li>
-				<li>Express</li>
-				<li>PostgreSQL</li>
-				<li>MongoDB</li>
-				<li>Sequelize</li>
-				<li>Typescript</li>
-				<li>React</li>
+			<ul className="list-none space-y-2 pl-5">
+				{[
+					"Node.js",
+					"Express",
+					"PostgreSQL",
+					"MongoDB",
+					"Sequelize",
+					"Typescript",
+					"React",
+				].map(item => (
+					<li key={item} className="flex items-center">
+						<Image
+							src="/check.svg"
+							alt="Check icon"
+							width={24}
+							height={24}
+							className="mr-2 text-white"
+						/>
+						{item}
+					</li>
+				))}
 			</ul>
 		),
 	},
@@ -30,9 +43,19 @@ const TAB_DATA: TabData[] = [
 		title: "Education",
 		id: "education",
 		content: (
-			<ul className="list-disc pl-5 space-y-2">
-				<li>Universidad Tecnologica Techtitute</li>
-				<li>Degree: Software Engineer</li>
+			<ul className="list-none space-y-2 pl-5">
+				{["Universidad Tecnologica Techtitute", "Degree: Software Engineer"].map(item => (
+					<li key={item} className="flex items-center">
+						<Image
+							src="/check.svg"
+							alt="Check icon"
+							width={24}
+							height={24}
+							className="mr-2 text-white"
+						/>
+						{item}
+					</li>
+				))}
 			</ul>
 		),
 	},
@@ -40,9 +63,19 @@ const TAB_DATA: TabData[] = [
 		title: "Certifications",
 		id: "certifications",
 		content: (
-			<ul className="list-disc pl-5 space-y-2">
-				<li>Universidad Tecnologica Techtitute</li>
-				<li>Master: Cloud Computing</li>
+			<ul className="list-none space-y-2 pl-5">
+				{["Universidad Tecnologica Techtitute", "Master: Cloud Computing"].map(item => (
+					<li key={item} className="flex items-center">
+						<Image
+							src="/check.svg"
+							alt="Check icon"
+							width={24}
+							height={24}
+							className="mr-2 text-white"
+						/>
+						{item}
+					</li>
+				))}
 			</ul>
 		),
 	},
@@ -70,7 +103,7 @@ const AboutSection: React.FC = () => {
 					<p className="text-lg mb-4">
 						Creative full stack developer with a strong passion for bringing new ideas to
 						life and extensive experience in collaborative development. Skilled in
-						JavaScript, React, Node.js, MongoDB, HTML, CSS, Express, and Mongoose, Im
+						JavaScript, React, Node.js, MongoDB, HTML, CSS, Express, and Mongoose, I am
 						looking to contribute my expertise in full stack development to help the
 						company transform innovative concepts into impactful digital solutions.
 					</p>
