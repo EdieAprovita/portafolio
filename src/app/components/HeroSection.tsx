@@ -36,24 +36,14 @@ const HeroSection = () => {
 						/>
 					</h1>
 					<p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-						I am a creative and advanced full-stack developer based in Mexico City with
-						over five years of experience specializing in both front-end and back-end
-						technologies. Proficient in JavaScript, React, Node.js, MongoDB, HTML, CSS,
-						Express, and Mongoose, I have a track record of developing robust digital
-						solutions and enhancing server performance using modern software development
-						methodologies including Agile and Scrum. I have contributed significantly to
-						various high-impact projects, such as developing scalable APIs for government
-						revenue systems and e-commerce platforms, and architecting digital platforms
-						for educational services. My roles have ranged from Application Developer at
-						Eviden, where I focused on server optimization and UI enhancements, to Lead
-						Software Developer at Persistent Systems, overseeing UI development and API
-						construction. Additionally, I have held positions at TCS and as a freelance
-						developer, further honing my skills in system architecture, data privacy, and
-						performance optimization. Educationally, I am advancing my expertise with a
-						Masters in Cloud Computing from Universidad Tecnológica and have completed
-						professional development in cloud technologies. My technical prowess is
-						complemented by my fluency in English and Spanish, enabling effective
-						communication and teamwork in diverse environments.
+						I am a seasoned full-stack developer based in Mexico City with over five years
+						of experience. Proficient in JavaScript, React, Node.js, MongoDB, HTML, CSS,
+						Express, and Mongoose, I excel in both front-end and back-end development. I
+						have successfully contributed to high-impact projects, such as scalable APIs
+						for government systems and e-commerce platforms. Currently pursuing a Degree
+						in Software Engineer, I enhance my skills in modern software development
+						methodologies. My bilingual proficiency in English and Spanish supports
+						effective communication and collaboration in diverse teams.
 					</p>
 					<div>
 						<Link
