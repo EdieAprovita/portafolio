@@ -18,7 +18,7 @@ const TAB_DATA: TabData[] = [
 			<ul className="list-none space-y-2 pl-5">
 				{[
 					"Node.js",
-					"Express",
+					"Javascript",
 					"PostgreSQL",
 					"MongoDB",
 					"Sequelize",
@@ -31,7 +31,7 @@ const TAB_DATA: TabData[] = [
 							alt="Check icon"
 							width={24}
 							height={24}
-							className="mr-2 text-white"
+							className="mr-2"
 						/>
 						{item}
 					</li>
@@ -44,14 +44,18 @@ const TAB_DATA: TabData[] = [
 		id: "education",
 		content: (
 			<ul className="list-none space-y-2 pl-5">
-				{["Universidad Tecnologica Techtitute", "Degree: Software Engineer"].map(item => (
+				{[
+					"Universidad Tecnologica Techtitute",
+					"Degree: Software Engineer",
+					"Graduation: February 2025",
+				].map(item => (
 					<li key={item} className="flex items-center">
 						<Image
 							src="/check.svg"
 							alt="Check icon"
 							width={24}
 							height={24}
-							className="mr-2 text-white"
+							className="mr-2"
 						/>
 						{item}
 					</li>
@@ -64,14 +68,18 @@ const TAB_DATA: TabData[] = [
 		id: "certifications",
 		content: (
 			<ul className="list-none space-y-2 pl-5">
-				{["Universidad Tecnologica Techtitute", "Master: Cloud Computing"].map(item => (
+				{[
+					"Universidad Tecnologica Techtitute",
+					"Master: Cloud Computing",
+					"Graduation: February 2024",
+				].map(item => (
 					<li key={item} className="flex items-center">
 						<Image
 							src="/check.svg"
 							alt="Check icon"
 							width={24}
 							height={24}
-							className="mr-2 text-white"
+							className="mr-2"
 						/>
 						{item}
 					</li>
@@ -89,18 +97,18 @@ const AboutSection: React.FC = () => {
 	};
 
 	return (
-		<section id="about" className="bg-gray-800 text-white py-12 px-4">
+		<section id="about" className="bg-gray-800 text-white py-12 px-4 md:px-8 lg:px-12">
 			<div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 				<Image
 					src="/images/setup.png"
 					width={500}
 					height={500}
 					alt="About Me"
-					className="rounded-lg shadow-lg"
+					className="rounded-lg shadow-lg w-full max-w-sm mx-auto md:mx-0 md:max-w-none"
 				/>
 				<div>
 					<h2 className="text-4xl font-bold mb-6">About Me</h2>
-					<p className="text-lg mb-4">
+					<p className="text-lg mb-4 leading-relaxed">
 						Creative full stack developer with a strong passion for bringing new ideas to
 						life and extensive experience in collaborative development. Skilled in
 						JavaScript, React, Node.js, MongoDB, HTML, CSS, Express, and Mongoose, I am

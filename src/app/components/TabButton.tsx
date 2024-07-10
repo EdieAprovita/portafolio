@@ -20,12 +20,12 @@ const TabButton: React.FC<TabButtonProps> = ({ active, selectTab, children }) =>
 	return (
 		<button
 			onClick={selectTab}
-			className={`px-4 py-2 rounded-full border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300 ${buttonClasses}`}>
+			className={`relative px-4 py-2 rounded-full border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300 ${buttonClasses}`}>
 			<p className="font-semibold">{children}</p>
 			<motion.div
 				animate={active ? "active" : "default"}
 				variants={variants}
-				className="h-1 bg-primary-500 mt-2"
+				className="absolute bottom-0 left-0 h-1 bg-primary-500 mt-2"
 			/>
 		</button>
 	);
