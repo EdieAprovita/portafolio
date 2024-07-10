@@ -96,10 +96,10 @@ const ProjectsSection: React.FC = () => {
 	};
 
 	return (
-		<section id="projects" className="bg-gray-900 text-white py-12 px-4">
+		<section id="projects" className="bg-gray-900 text-white py-12 px-4 md:px-8 lg:px-12">
 			<div className="container mx-auto">
 				<h2 className="text-center text-4xl font-bold mt-4 mb-8 md:mb-12">My Projects</h2>
-				<div className="flex flex-row justify-center items-center gap-2 mb-6">
+				<div className="flex justify-center items-center gap-4 mb-6">
 					{["Client", "Personal"].map(item => (
 						<ProjectTag
 							key={item}
@@ -109,7 +109,7 @@ const ProjectsSection: React.FC = () => {
 						/>
 					))}
 				</div>
-				<ul ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<ul ref={ref} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 					{filteredProjects.map((project, index) => (
 						<motion.li
 							key={project.id}
