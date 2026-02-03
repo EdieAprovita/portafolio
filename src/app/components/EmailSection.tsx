@@ -5,16 +5,16 @@ const EmailSection: React.FC = () => {
 	return (
 		<section
 			id="contact"
-			className="flex flex-col md:flex-row items-center justify-center md:justify-between my-12 py-24 gap-6 relative bg-gradient-to-br from-gray-800 to-gray-900 text-white">
-			<div className="bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-blue-600 to-transparent rounded-full h-80 w-80 blur-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 filter opacity-20"></div>
+			className="flex flex-col md:flex-row items-center justify-center md:justify-between my-12 py-24 gap-6 relative bg-gradient-to-br from-secondary-600 to-dark text-white">
+			<div className="bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-primary-500 to-transparent rounded-full h-80 w-80 blur-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 filter opacity-20"></div>
 			<div className="z-10 px-4 text-center md:text-left">
 				<h5 className="text-2xl font-bold mb-2">Let´s Connect</h5>
-				<p className="text-gray-300 mb-4 max-w-lg">
+				<p className="text-muted mb-4 max-w-lg">
 					I am currently seeking new opportunities and I´m always open to connecting.
 					Whether you have a question or just want to say hello, feel free to reach out!
 				</p>
 				<div className="flex justify-center md:justify-start gap-4">
-					<Link href="https://github.com/EdieAprovita" aria-label="GitHub">
+					<Link href="https://github.com/EdieAprovita" aria-label="GitHub" className="focus:outline-none focus:ring-2 focus:ring-primary-400 rounded-full">
 						<Image
 							className="hover:scale-110 transition-transform"
 							src="/github-icon.svg"
@@ -24,7 +24,7 @@ const EmailSection: React.FC = () => {
 							layout="fixed"
 						/>
 					</Link>
-					<Link href="https://www.linkedin.com/in/edgar-chavero/" aria-label="LinkedIn">
+					<Link href="https://www.linkedin.com/in/edgar-chavero/" aria-label="LinkedIn" className="focus:outline-none focus:ring-2 focus:ring-primary-400 rounded-full">
 						<Image
 							className="hover:scale-110 transition-transform"
 							src="/linkedin-icon.svg"
@@ -34,7 +34,7 @@ const EmailSection: React.FC = () => {
 							layout="fixed"
 						/>
 					</Link>
-					<Link href="mailto:eacm316@gmail.com" aria-label="Email">
+					<Link href="mailto:eacm316@gmail.com" aria-label="Email" className="focus:outline-none focus:ring-2 focus:ring-primary-400 rounded-full">
 						<Image
 							className="hover:scale-110 transition-transform"
 							src="/images/gmail.png"

@@ -14,13 +14,13 @@ interface TabButtonProps {
 
 const TabButton: React.FC<TabButtonProps> = ({ active, selectTab, children }) => {
 	const buttonClasses = active
-		? "text-white bg-blue-500 border-blue-500"
-		: "text-gray-300 bg-transparent border-gray-500 hover:bg-blue-500 hover:text-white hover:border-blue-500";
+		? "text-white bg-primary-600 border-primary-600"
+		: "text-muted bg-transparent border-muted hover:bg-primary-500 hover:text-white hover:border-primary-500";
 
 	return (
 		<button
 			onClick={selectTab}
-			className={`relative px-4 py-2 rounded-full border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300 ${buttonClasses}`}>
+			className={`relative px-4 py-3 rounded-full border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-400 ${buttonClasses}`}>
 			<p className="font-semibold">{children}</p>
 			<motion.div
 				animate={active ? "active" : "default"}

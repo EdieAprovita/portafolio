@@ -38,37 +38,36 @@ const HeroSection = () => {
 							repeat={Infinity}
 						/>
 					</h1>
-					<p className="text-[#f0f0f0] text-base sm:text-lg mb-6 lg:text-xl">
-						I am a seasoned full-stack developer based in Mexico City with over five years
-						of experience. Proficient in JavaScript, React, Node.js, MongoDB, HTML, CSS,
-						Express, and Mongoose, I excel in both front-end and back-end development. I
-						have successfully contributed to high-impact projects, such as scalable APIs
-						for government systems and e-commerce platforms. Currently pursuing a Degree
-						in Software Engineer, I enhance my skills in modern software development
-						methodologies. My bilingual proficiency in English and Spanish supports
-						effective communication and collaboration in diverse teams.
+					<p className="text-[#f0f0f0] text-base sm:text-lg mb-8 lg:text-xl">
+						I am a creative Full Stack Developer based in Mexico City with over six years
+						of experience. Currently working at GBG, I am proficient in JavaScript, React,
+						Node.js, TypeScript, MongoDB, PostgreSQL, HTML, and CSS. I excel in both
+						front-end and back-end development, having contributed to high-impact projects
+						including scalable APIs for government systems and e-commerce platforms. My
+						bilingual proficiency in English and Spanish supports effective communication
+						and collaboration in diverse teams.
 					</p>
 					<div>
 						<Link
 							href="/CV.pdf"
 							download={true}
-							className="px-1 inline-block py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-800 text-gold-500 mt-3 mb-4">
-							<span className="block bg-[#75870c] hover:#75870c rounded-full px-5 py-2 text-gold-500">
+							className="px-1 inline-block py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-800 text-gold-500 mt-3 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-dark">
+							<span className="block bg-primary-600 hover:bg-primary-500 rounded-full px-5 py-2 text-white">
 								Download CV
 							</span>
 						</Link>
 						<Link
 							href="https://github.com/EdieAprovita"
-							className="px-1 inline-block py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-800 text-gold-500 mt-3 mb-4">
-							<span className="block bg-[#75870c] hover:#75870c rounded-full px-5 py-2 text-gold-500">
+							className="px-1 inline-block py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-800 text-gold-500 mt-3 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-dark">
+							<span className="block bg-primary-600 hover:bg-primary-500 rounded-full px-5 py-2 text-white">
 								Github
 							</span>
 						</Link>
 						<Link
 							href="https://www.hackerrank.com/profile/edieveg316"
-							className="px-1 inline-block py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-800 text-gold-500 mt-3 mb-4">
-							<span className="block bg-[#75870c] hover:#75870c rounded-full px-5 py-2 text-gold-500">
-								Hacker Rank
+							className="px-1 inline-block py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-800 text-gold-500 mt-3 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-dark">
+							<span className="block bg-primary-600 hover:bg-primary-500 rounded-full px-5 py-2 text-white">
+								HackerRank
 							</span>
 						</Link>
 					</div>
@@ -78,7 +77,7 @@ const HeroSection = () => {
 					animate={{ opacity: 1, scale: 1 }}
 					transition={{ duration: 0.5 }}
 					className="col-span-4 place-self-center mt-4 lg:mt-0">
-					<div className="rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
+					<div className="rounded-full bg-dark-lighter w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
 						<Image
 							src="/images/image.png"
 							alt="hero image"

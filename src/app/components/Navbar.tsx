@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { v4 as uuidv4 } from "uuid";
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
@@ -31,13 +31,8 @@ const navLinks: NavLink[] = [
 const Navbar: React.FC = () => {
 	const [navbarOpen, setNavbarOpen] = useState<boolean>(false);
 
-	const navLinksWithKeys = navLinks.map(link => ({
-		...link,
-		key: uuidv4(),
-	}));
-
 	return (
-		<nav className="fixed mx-auto border border-[#33353F] top-0 left-0 right-0 z-10 bg-[#212020] bg-opacity-100">
+		<nav className="fixed mx-auto border border-dark-border top-0 left-0 right-0 z-10 bg-dark bg-opacity-100">
 			<div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
 				<Link href={"/"} passHref>
 					<div className="text-2xl md:text-5xl text-white font-semibold cursor-pointer">
@@ -61,15 +56,25 @@ const Navbar: React.FC = () => {
 				</div>
 				<div className="menu hidden md:block md:w-auto" id="navbar">
 					<ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
-						{navLinksWithKeys.map(link => (
-							<li key={link.key}>
+						{navLinks.map(link => (
+							<li key={link.path}>
 								<NavLink href={link.path} title={link.title} />
 							</li>
 						))}
 					</ul>
 				</div>
 			</div>
-			{navbarOpen ? <MenuOverlay links={navLinks} /> : null}
+			<AnimatePresence>
+				{navbarOpen && (
+					<motion.div
+						initial={{ opacity: 0, height: 0 }}
+						animate={{ opacity: 1, height: "auto" }}
+						exit={{ opacity: 0, height: 0 }}
+						transition={{ duration: 0.3 }}>
+						<MenuOverlay links={navLinks} />
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</nav>
 	);
 };
