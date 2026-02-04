@@ -1,34 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+	:root {
+		--background: #0a0a0f;
+		--background-elevated: #12121a;
+		--background-card: #1a1a25;
+		--accent: #00d4ff;
+		--accent-violet: #8b5cf6;
+		--foreground: #fafafa;
+		--foreground-muted: #a1a1aa;
+		--foreground-subtle: #71717a;
+		--border: #27272a;
+		--border-hover: #3f3f46;
+	}
+
+	* {
+		@apply border-border;
+	}
+
 	body {
-		@apply bg-dark text-white;
-		font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-		margin: 0;
-		padding: 0;
+		@apply bg-background text-foreground antialiased;
+		font-family: 'Inter', system-ui, sans-serif;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: 'Space Grotesk', system-ui, sans-serif;
 	}
 
 	a:focus-visible,
 	button:focus-visible {
-		@apply outline-none ring-2 ring-primary-400 ring-offset-2 ring-offset-dark;
+		@apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-background;
+	}
+
+	::selection {
+		@apply bg-accent/30 text-foreground;
 	}
 }
 
 @layer components {
 	.btn-primary {
-		@apply px-6 py-3 rounded-full bg-primary-600 text-white
-			hover:bg-primary-500 transition-all duration-300
-			focus:outline-none focus:ring-2 focus:ring-primary-400;
+		@apply relative px-8 py-4 rounded-lg bg-accent text-background font-semibold
+			overflow-hidden transition-all duration-300 ease-out
+			hover:shadow-[0_0_30px_rgba(0,212,255,0.4)] hover:scale-105
+			focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background;
+	}
+
+	.btn-primary::before {
+		content: '';
+		@apply absolute inset-0 bg-gradient-to-r from-accent to-accent-violet opacity-0 transition-opacity duration-300;
+	}
+
+	.btn-primary:hover::before {
+		@apply opacity-100;
+	}
+
+	.btn-primary span {
+		@apply relative z-10;
 	}
 
 	.btn-outline {
-		@apply px-6 py-3 rounded-full border-2 border-primary-600 text-white
-			hover:bg-primary-600 transition-all duration-300;
+		@apply px-8 py-4 rounded-lg border border-border text-foreground font-medium
+			transition-all duration-300 ease-out
+			hover:border-accent hover:text-accent hover:shadow-[0_0_20px_rgba(0,212,255,0.2)]
+			focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background;
 	}
 
-	.card-dark {
-		@apply bg-dark-lighter rounded-xl shadow-lg;
+	.card-glass {
+		@apply relative bg-background-card/80 backdrop-blur-xl rounded-2xl border border-border
+			overflow-hidden transition-all duration-300
+			hover:border-border-hover hover:shadow-[0_0_40px_rgba(0,212,255,0.1)];
+	}
+
+	.card-glass::before {
+		content: '';
+		@apply absolute inset-0 bg-gradient-to-br from-accent/5 to-accent-violet/5 opacity-0 transition-opacity duration-300;
+	}
+
+	.card-glass:hover::before {
+		@apply opacity-100;
+	}
+
+	.text-gradient {
+		@apply bg-gradient-to-r from-accent to-accent-violet bg-clip-text text-transparent;
+	}
+
+	.glow-border {
+		@apply relative;
+	}
+
+	.glow-border::after {
+		content: '';
+		@apply absolute -inset-[1px] bg-gradient-to-r from-accent to-accent-violet rounded-lg opacity-0 transition-opacity duration-300 -z-10;
+	}
+
+	.glow-border:hover::after {
+		@apply opacity-100;
+	}
+
+	.nav-link {
+		@apply relative text-foreground-muted transition-colors duration-200 hover:text-foreground;
+	}
+
+	.nav-link::after {
+		content: '';
+		@apply absolute -bottom-1 left-0 w-0 h-[2px] bg-accent transition-all duration-300;
+	}
+
+	.nav-link:hover::after {
+		@apply w-full;
+	}
+
+	.section-padding {
+		@apply py-24 px-4 sm:px-6 lg:px-8 xl:px-12;
+	}
+
+	.container-custom {
+		@apply max-w-7xl mx-auto;
+	}
+}
+
+@layer utilities {
+	.animate-float {
+		animation: float 6s ease-in-out infinite;
+	}
+
+	.animate-glow {
+		animation: glow 2s ease-in-out infinite alternate;
+	}
+
+	@keyframes float {
+		0%, 100% { transform: translateY(0px); }
+		50% { transform: translateY(-20px); }
+	}
+
+	@keyframes glow {
+		0% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+		100% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.6); }
 	}
 }

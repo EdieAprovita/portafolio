@@ -2,18 +2,18 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
 
-interface NavLink {
+interface NavLinkItem {
 	title: string;
 	path: string;
 }
 
-const navLinks: NavLink[] = [
+const navLinks: NavLinkItem[] = [
 	{
 		title: "About",
 		path: "#about",
@@ -30,47 +30,86 @@ const navLinks: NavLink[] = [
 
 const Navbar: React.FC = () => {
 	const [navbarOpen, setNavbarOpen] = useState<boolean>(false);
+	const [scrolled, setScrolled] = useState<boolean>(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setScrolled(window.scrollY > 50);
+		};
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
 
 	return (
-		<nav className="fixed mx-auto border border-dark-border top-0 left-0 right-0 z-10 bg-dark bg-opacity-100">
-			<div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
-				<Link href={"/"} passHref>
-					<div className="text-2xl md:text-5xl text-white font-semibold cursor-pointer">
-						<Image src="/images/logo.png" width={75} height={75} alt="Logo" />
-					</div>
-				</Link>
-				<div className="mobile-menu block md:hidden">
-					{!navbarOpen ? (
-						<button
-							onClick={() => setNavbarOpen(true)}
-							className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white">
-							<Bars3Icon className="h-5 w-5" />
-						</button>
-					) : (
-						<button
-							onClick={() => setNavbarOpen(false)}
-							className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white">
-							<XMarkIcon className="h-5 w-5" />
-						</button>
-					)}
-				</div>
-				<div className="menu hidden md:block md:w-auto" id="navbar">
-					<ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
-						{navLinks.map(link => (
-							<li key={link.path}>
+		<nav 
+			className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+				scrolled 
+					? "bg-background/80 backdrop-blur-xl border-b border-border" 
+					: "bg-transparent"
+				}`}>
+			<div className="container-custom">
+				<div className="flex items-center justify-between h-20 px-4 sm:px-6 lg:px-8">
+					<Link href={"/"} className="flex items-center gap-3 group">
+						<div className="relative">
+							<Image 
+								src="/images/logo.png" 
+								width={45} 
+								height={45} 
+								alt="Logo"
+								className="transition-transform duration-300 group-hover:scale-110"
+							/>
+						</div>
+						<span className="font-display font-bold text-xl text-foreground hidden sm:block">
+							Edgar<span className="text-accent">.</span>
+						</span>
+					</Link>
+
+					<div className="hidden md:flex items-center gap-8">
+						{navLinks.map((link, index) => (
+							<motion.div
+								key={link.path}
+								initial={{ opacity: 0, y: -10 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ delay: index * 0.1 }}
+							>
 								<NavLink href={link.path} title={link.title} />
-							</li>
+							</motion.div>
 						))}
-					</ul>
+						<motion.a
+							href="/CV.pdf"
+							download
+							initial={{ opacity: 0, y: -10 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ delay: 0.3 }}
+							className="btn-primary text-sm py-2 px-6"
+						>
+							<span>Download CV</span>
+						</motion.a>
+					</div>
+
+					<div className="md:hidden">
+						<button
+							onClick={() => setNavbarOpen(!navbarOpen)}
+							className="p-2 rounded-lg text-foreground-muted hover:text-foreground hover:bg-background-elevated transition-colors"
+							aria-label="Toggle menu">
+							{navbarOpen ? (
+								<XMarkIcon className="h-6 w-6" />
+							) : (
+								<Bars3Icon className="h-6 w-6" />
+							)}
+						</button>
+					</div>
 				</div>
 			</div>
+
 			<AnimatePresence>
 				{navbarOpen && (
 					<motion.div
 						initial={{ opacity: 0, height: 0 }}
 						animate={{ opacity: 1, height: "auto" }}
 						exit={{ opacity: 0, height: 0 }}
-						transition={{ duration: 0.3 }}>
+						transition={{ duration: 0.3 }}
+						className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border">
 						<MenuOverlay links={navLinks} />
 					</motion.div>
 				)}

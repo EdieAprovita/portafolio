@@ -1,59 +1,116 @@
+"use client";
+
 import React from "react";
-import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowTopRightOnSquareIcon, CodeBracketIcon } from "@heroicons/react/24/outline";
 
 interface ProjectCardProps {
-	imgUrl: string;
-	title: string;
-	description: string;
-	gitUrl?: string;
-	previewUrl?: string;
+  title: string;
+  description: string;
+  image: string;
+  tech: string[];
+  gitUrl?: string;
+  previewUrl: string;
+  tag: string;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
-	imgUrl,
-	title,
-	description,
-	gitUrl,
-	previewUrl,
+  title,
+  description,
+  image,
+  tech,
+  gitUrl,
+  previewUrl,
+  tag,
 }) => {
-	// Detectar si es un logo (archivos con 'logo' en el nombre)
-	const isLogo = imgUrl.toLowerCase().includes('logo');
+  const isLogo = image.toLowerCase().includes("logo");
 
-	return (
-		<div className="shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl overflow-hidden">
-			<div className={`h-52 md:h-72 rounded-t-xl relative group overflow-hidden ${isLogo ? 'bg-white' : ''}`}>
-				<Image
-					src={imgUrl}
-					alt={title}
-					fill
-					className={isLogo ? 'object-contain p-8' : 'object-cover'}
-					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-				/>
-				<div className="overlay items-center justify-center absolute top-0 left-0 w-full h-full bg-dark-lighter bg-opacity-0 hidden group-hover:flex group-hover:bg-opacity-80 transition-all duration-500 gap-4 z-10">
-					{gitUrl && (
-						<Link
-							href={gitUrl}
-							className="h-14 w-14 border-2 rounded-full border-muted hover:border-white flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300">
-							<CodeBracketIcon className="h-8 w-8 text-muted hover:text-white cursor-pointer" />
-						</Link>
-					)}
-					{previewUrl && (
-						<Link
-							href={previewUrl}
-							className="h-14 w-14 border-2 rounded-full border-muted hover:border-white flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300">
-							<EyeIcon className="h-8 w-8 text-muted hover:text-white cursor-pointer" />
-						</Link>
-					)}
-				</div>
-			</div>
-			<div className="text-white rounded-b-xl bg-dark-lighter py-6 px-4">
-				<h5 className="text-xl font-semibold mb-2">{title}</h5>
-				<p className="text-muted">{description}</p>
-			</div>
-		</div>
-	);
+  return (
+    <motion.div
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.3 }}
+      className="card-glass h-full flex flex-col group"
+    >
+      {/* Image Container */}
+      <div className="relative h-52 overflow-hidden">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className={`transition-transform duration-500 group-hover:scale-110 ${
+            isLogo ? "object-contain p-8 bg-white/5" : "object-cover"
+          }`}
+        />
+        
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background-card via-background-card/50 to-transparent opacity-60" />
+        
+        {/* Tag Badge */}
+        <div className="absolute top-4 left-4">
+          <span className={`px-3 py-1 rounded-full text-xs font-mono font-medium ${
+            tag === "Client" 
+              ? "bg-accent/20 text-accent border border-accent/30" 
+              : "bg-accent-violet/20 text-accent-violet border border-accent-violet/30"
+          }`}>
+            {tag}
+          </span>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {gitUrl && (
+            <Link
+              href={gitUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 bg-background/90 backdrop-blur-sm rounded-lg border border-border hover:border-accent hover:text-accent transition-colors"
+              aria-label="View Source Code"
+            >
+              <CodeBracketIcon className="w-5 h-5" />
+            </Link>
+          )}
+          <Link
+            href={previewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 bg-background/90 backdrop-blur-sm rounded-lg border border-border hover:border-accent hover:text-accent transition-colors"
+            aria-label="View Live Project"
+          >
+            <ArrowTopRightOnSquareIcon className="w-5 h-5" />
+          </Link>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="flex flex-col flex-grow p-6">
+        <h3 className="font-display font-semibold text-xl text-foreground mb-3 group-hover:text-accent transition-colors">
+          {title}
+        </h3>
+        <p className="text-foreground-muted text-sm leading-relaxed mb-4 flex-grow">
+          {description}
+        </p>
+
+        {/* Tech Stack */}
+        <div className="flex flex-wrap gap-2 mt-auto">
+          {tech.map((item) => (
+            <span
+              key={item}
+              className="px-3 py-1 text-xs font-mono bg-background/50 border border-border rounded-md text-foreground-muted"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Hover Glow Effect */}
+      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-accent-violet/5 rounded-2xl" />
+      </div>
+    </motion.div>
+  );
 };
 
 export default ProjectCard;

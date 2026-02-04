@@ -9,7 +9,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, title }) => {
 	return (
 		<Link
 			href={href}
-			className="block py-2 pl-3 pr-4 text-muted sm:text-xl rounded md:p-0 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-dark">
+			className="nav-link font-medium text-sm uppercase tracking-wider">
 			{title}
 		</Link>
 	);
